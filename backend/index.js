@@ -18,8 +18,8 @@ app.use(cors({
 
 
 // routes
-const bookRoutes = require('./src/books/book.route')
-app.use("/api/books", bookRoutes)
+const itemRoutes = require('./src/books/item.route')
+app.use("/api/items", itemRoutes)
 
 const orderRoutes = require("./src/orders/order.route")
 app.use("/api/orders", orderRoutes)
