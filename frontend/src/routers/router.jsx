@@ -6,7 +6,7 @@ import Register from "../components/Register";
 import Login from "../components/Login";
 import CartPage from "../pages/books/CartPage";
 import CheckoutPage from "../pages/books/CheckoutPage";
-import SingleBook from "../pages/books/SingleBook";
+// import SingleBook from "../pages/books/SingleBook";
 import PrivateRoute from "./PrivateRoute";
 import OrderPage from "../pages/books/OrderPage";
 import AdminRoute from "./AdminRoute";
@@ -17,6 +17,7 @@ import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
 import AddBook from "../pages/dashboard/addBook/AddBook";
 import UpdateBook from "../pages/dashboard/editBook/UpdateBook";
 import UserDashboard from "../pages/dashboard/users/UserDashboard";
+import SingleItem from "../pages/books/SingleItem";
 
 
 const router = createBrowserRouter([
@@ -53,12 +54,12 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><CheckoutPage /></PrivateRoute>
             },
             {
-                path: "/books/:id",
-                element: <SingleBook />
+                path: "/items/:id",
+                element: <SingleItem />
             },
             {
-            path: "/user-dashboard",
-            element: <PrivateRoute><UserDashboard/></PrivateRoute>
+                path: "/user-dashboard",
+                element: <PrivateRoute><UserDashboard /></PrivateRoute>
             }
         ]
     },
@@ -76,15 +77,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "add-new-book",
-                element: <AdminRoute><AddBook/></AdminRoute>
+                element: <AdminRoute><AddBook /></AdminRoute>
             },
             {
                 path: "edit-book/:id",
-                element: <AdminRoute><UpdateBook/></AdminRoute>
+                element: <AdminRoute><UpdateBook /></AdminRoute>
             },
             {
                 path: "manage-books",
-                element: <AdminRoute><ManageBooks/></AdminRoute>
+                element: <AdminRoute><ManageBooks /></AdminRoute>
             }
         ]
     }

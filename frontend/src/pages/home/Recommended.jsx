@@ -15,13 +15,14 @@ import 'swiper/css/navigation';
 import BookCard from '../books/BookCard';
 
 
+
 // API for GET
-import { useFetchAllBooksQuery } from '../../redux/features/books/booksApi';
+import { useFetchAllItemsQuery } from '../../redux/features/items/itemsApi';
 
 const Recommended = () => {
 
     // API
-    const { data: books = [] } = useFetchAllBooksQuery()
+    const { data: books = [] } = useFetchAllItemsQuery()
 
     return (
 

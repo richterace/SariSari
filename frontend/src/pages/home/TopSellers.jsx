@@ -14,8 +14,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
+
 // API Modules
-import { useFetchAllBooksQuery } from '../../redux/features/books/booksApi';
+import { useFetchAllItemsQuery } from '../../redux/features/items/itemsApi';
 
 
 const categories = ["Choose a genre", "Business", "Fiction", "Horror", "Adventure"]
@@ -25,7 +26,7 @@ const TopSellers = () => {
 
     const [selectedCategory, setSelectedCategory] = useState("Choose a genre");
     // api responsible for getting all books
-    const { data: books = [] } = useFetchAllBooksQuery()
+    const { data: books = [] } = useFetchAllItemsQuery()
 
     const filteredBooks = selectedCategory === "Choose a genre" ? books :
         books.filter(book => book.category === selectedCategory.toLowerCase())

@@ -31,15 +31,15 @@ const itemsApi = createApi({
     baseQuery,
     tagTypes: ['Items'],
     endpoints: (builder) => ({
-        fetchAllBooks: builder.query({
+        fetchAllItems: builder.query({
             query: () => "/",
             providesTags: ["Items"]
         }),
-        fetchBookById: builder.query({
+        fetchItemById: builder.query({
             query: (id) => `${id}`,
             providesTags: (results, error, id) => [{ type: "Items", id }],
         }),
-        addBook: builder.mutation({
+        addItem: builder.mutation({
             query: (newBook) => ({
                 url: `/create-item`,
                 method: "POST",
@@ -47,7 +47,7 @@ const itemsApi = createApi({
             }),
             invalidatesTags: ["Items"]
         }),
-        updateBook: builder.mutation({
+        updateItem: builder.mutation({
             query: ({ id, ...rest }) => ({
                 url: `/edit/${id}`,
                 method: "PUT",
@@ -59,7 +59,7 @@ const itemsApi = createApi({
             invalidatesTags: ["Items"]
         }),
 
-        deleteBook: builder.mutation({
+        deleteItem: builder.mutation({
             query: (id) => ({
                 url: `/delete/${id}`,  // error in route fixed
                 method: "DELETE"
@@ -71,9 +71,9 @@ const itemsApi = createApi({
 })
 
 export const {
-    useFetchAllBooksQuery,
-    useFetchBookByIdQuery,
-    useAddBookMutation,
-    useUpdateBookMutation,
-    useDeleteBookMutation } = itemsApi
+    useFetchAllItemsQuery,
+    useFetchItemByIdQuery,
+    useAddItemMutation,
+    useUpdateItemMutation,
+    useDeleteItemMutation } = itemsApi
 export default itemsApi;

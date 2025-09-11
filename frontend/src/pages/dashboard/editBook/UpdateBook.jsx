@@ -5,48 +5,49 @@ import SelectField from '../addBook/SelectField'
 
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { useFetchBookByIdQuery, useUpdateBookMutation } from '../../../redux/features/books/booksApi';
+
 import Loading from '../../../components/Loading';
 import axios from 'axios';
 import getBaseUrl from '../../../utils/baseUrl';
 import Swal from 'sweetalert2';
+import { useFetchItemByIdQuery, useUpdateItemMutation } from '../../../redux/features/items/itemsApi';
 
 const UpdateBook = () => {
 
-    const {id} = useParams();
+  const { id } = useParams();
 
-    // get the book data
-    const {data:bookData, isLoading, isError, refetch} = useFetchBookByIdQuery(id);
+  // get the book data
+  const { data: bookData, isLoading, isError, refetch } = useFetchItemByIdQuery(id);
 
-    // update book
-    const [updateBook] = useUpdateBookMutation();
+  // update book
+  const [updateBook] = useUpdateItemMutation();
 
-    const { register, handleSubmit, setValue, reset } = useForm();
-    useEffect(()=>{
-        if(bookData){
-            setValue('title', bookData.title);
-            setValue('description', bookData.description);
-            setValue('category', bookData?.category);
-            setValue('trending', bookData.trending);
-            setValue('oldPrice', bookData.oldPrice);
-            setValue('newPrice', bookData.newPrice);
-            setValue('coverImage', bookData.coverImage)
-        }
+  const { register, handleSubmit, setValue, reset } = useForm();
+  useEffect(() => {
+    if (bookData) {
+      setValue('title', bookData.title);
+      setValue('description', bookData.description);
+      setValue('category', bookData?.category);
+      setValue('trending', bookData.trending);
+      setValue('oldPrice', bookData.oldPrice);
+      setValue('newPrice', bookData.newPrice);
+      setValue('coverImage', bookData.coverImage)
+    }
 
-    },[bookData, setValue]) // as a dependency
+  }, [bookData, setValue]) // as a dependency
 
-    const onSubmit = async (data) => {
-        const updateBookData = {
-            title: data.title,
-            description: data.description,
-            category: data.category,
-            trending: data.trending,
-            oldPrice: Number(data.oldPrice),
-            newPrice: Number(data.newPrice),
-            coverImage: data.coverImage || bookData.coverImage,
+  const onSubmit = async (data) => {
+    const updateBookData = {
+      title: data.title,
+      description: data.description,
+      category: data.category,
+      trending: data.trending,
+      oldPrice: Number(data.oldPrice),
+      newPrice: Number(data.newPrice),
+      coverImage: data.coverImage || bookData.coverImage,
     };
     try {
-        await axios.put(`${getBaseUrl()}/api/books/edit/${id}`, updateBookData, {
+      await axios.put(`${getBaseUrl()}/api/books/edit/${id}`, updateBookData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -63,15 +64,15 @@ const UpdateBook = () => {
       });
       await refetch()
     } catch (error) {
-        console.error("Failed to update book", error)
-        
+      console.error("Failed to update book", error)
+
     }
 
-    };
+  };
 
 
-    if(isLoading) return <Loading/>
-    if(isError) return <div>Error fetching data...</div>
+  if (isLoading) return <Loading />
+  if (isError) return <div>Error fetching data...</div>
   return (
     <div className="max-w-lg mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Update Book</h2>
