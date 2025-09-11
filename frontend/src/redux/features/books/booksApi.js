@@ -14,7 +14,7 @@ builder.mutation()
 
 const baseQuery = fetchBaseQuery({
 
-    baseUrl: `${getBaseUrl()}/api/books`,
+    baseUrl: `${getBaseUrl()}/api/items`,
     credentials: 'include',
     prepareHeaders: (Headers) => {
         const token = localStorage.getItem('token');
@@ -41,7 +41,7 @@ const booksApi = createApi({
         }),
         addBook: builder.mutation({
             query: (newBook) => ({
-                url: `/create-book`,
+                url: `/create-item`,
                 method: "POST",
                 body: newBook
             }),

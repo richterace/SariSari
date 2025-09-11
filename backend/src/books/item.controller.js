@@ -1,16 +1,16 @@
-const Book = require("./item.model");
+const Item = require("./item.model");
 
 const postItem = async (req, res) => {
     // pass into database instead of just console
 
     try {
-        const newItem = await Book({ ...req.body });
+        const newItem = await Item({ ...req.body });
         await newItem.save();
-        res.status(200).send({ message: "Book posted successfully", book: newItem })
+        res.status(200).send({ message: "Item posted successfully", item: newItem })
     } catch (error) {
 
-        console.error("Error creating book", error)
-        res.status(500).send({ message: "failed to create a book" })
+        console.error("Error creating item", error)
+        res.status(500).send({ message: "failed to create a item" })
     }
 
 }
@@ -18,12 +18,12 @@ const postItem = async (req, res) => {
 
 const getAllItem = async (req, res) => {
     try {
-        const items = await Book.find().sort({ createdAt: -1 }); // -1 means descending order
+        const items = await Item.find().sort({ createdAt: -1 }); // -1 means descending order
         res.status(200).send(items)
 
     } catch (error) {
-        console.error("Error fetching books", error);
-        res.status(500).send({ message: "Failed to fetch books" })
+        console.error("Error fetching items", error);
+        res.status(500).send({ message: "Failed to fetch items" })
 
     }
 }
@@ -34,15 +34,15 @@ const getSingleItem = async (req, res) => {
 
     try {
         const { id } = req.params;
-        const item = await Book.findById(id)
+        const item = await Item.findById(id)
 
         if (!item) {
-            res.status(404).send({ message: "Book not found" }) // 404 means not found
+            res.status(404).send({ message: "Item not found" }) // 404 means not found
         }
         res.status(200).send(item)
     } catch (error) {
-        console.error("Error fetching books", error);
-        res.status(500).send({ message: "Failed to fetch books" })
+        console.error("Error fetching items", error);
+        res.status(500).send({ message: "Failed to fetch items" })
     }
 }
 
@@ -57,24 +57,24 @@ const updateItem = async (req, res) => {
     try {
 
         const { id } = req.params;
-        const updatedItem = await Book.findByIdAndUpdate(id, req.body, { new: true });
+        const updatedItem = await Item.findByIdAndUpdate(id, req.body, { new: true });
         if (!updatedItem) {
-            res.status(404).send({ message: "Book not found" }) // 404 means not found
+            res.status(404).send({ message: "Item not found" }) // 404 means not found
         }
         res.status(200).send({
-            message: "Book update successfully",
-            book: updatedItem
+            message: "Item update successfully",
+            item: updatedItem
         });
 
 
     } catch (error) {
-        console.error("Error updating a book", error);
-        res.status(500).send({ message: "Failed to update book" })
+        console.error("Error updating a item", error);
+        res.status(500).send({ message: "Failed to update item" })
     }
 }
 
 
-// delete a book by id endpoint
+// delete a item by id endpoint
 const deleteItem = async (req, res) => {
 
     try {
@@ -82,18 +82,18 @@ const deleteItem = async (req, res) => {
         // A.findOneAndDelete(conditions) // returns Query
         // A.findOneAndDelete() 
         const { id } = req.params;
-        const deletedItem = await Book.findByIdAndDelete(id);
+        const deletedItem = await Item.findByIdAndDelete(id);
         if (!deletedItem) {
-            res.status(404).send({ message: "Book not found" }) // 404 means not found
+            res.status(404).send({ message: "Item not found" }) // 404 means not found
         }
         res.status(200).send({
             message: "deleted successfully",
-            book: deletedItem
+            item: deletedItem
         });
 
     } catch (error) {
-        console.error("Error deleting a book", error);
-        res.status(500).send({ message: "Failed to delete book" })
+        console.error("Error deleting a item", error);
+        res.status(500).send({ message: "Failed to delete item" })
     }
 
 }
