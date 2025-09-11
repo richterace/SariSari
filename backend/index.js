@@ -18,7 +18,7 @@ app.use(cors({
 
 
 // routes
-const itemRoutes = require('./src/books/item.route')
+const itemRoutes = require('./src/items/item.route')
 app.use("/api/items", itemRoutes)
 
 const orderRoutes = require("./src/orders/order.route")
@@ -35,7 +35,7 @@ async function main() {
     await mongoose.connect(process.env.DB_URL);
 
     app.use('/', (req, res) => {
-        res.send("Book Server")
+        res.send("SariSari Server")
     })
 }
 
