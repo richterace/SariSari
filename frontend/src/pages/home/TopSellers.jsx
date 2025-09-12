@@ -19,7 +19,7 @@ import 'swiper/css/navigation';
 import { useFetchAllItemsQuery } from '../../redux/features/items/itemsApi';
 
 
-const categories = ["Choose a genre", "Business", "Fiction", "Horror", "Adventure"]
+const categories = ["Choose a genre", "Snacks", "Condiments", "Alcohol", "Softdrinks", "Canned"]
 
 const TopSellers = () => {
 

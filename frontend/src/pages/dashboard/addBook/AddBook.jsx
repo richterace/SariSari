@@ -101,11 +101,11 @@ const AddBook = () => {
           name="category"
           options={[
             { value: '', label: 'Choose A Category' },
-            { value: 'business', label: 'Business' },
-            { value: 'technology', label: 'Technology' },
-            { value: 'fiction', label: 'Fiction' },
-            { value: 'horror', label: 'Horror' },
-            { value: 'adventure', label: 'Adventure' },
+            { value: 'snacks', label: 'Snacks' },
+            { value: 'condiments', label: 'Condiments' },
+            { value: 'alcohol', label: 'Alcohol' },
+            { value: 'softdrinks', label: 'Softdrinks' },
+            { value: 'canned', label: 'Canned' },
             // Add more options as needed
           ]}
           register={register}
