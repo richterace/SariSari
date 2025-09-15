@@ -1,6 +1,6 @@
 const express = require('express');
 const Book = require('./item.model');
-const { postItem, getAllItem, getSingleItem, updateItem, deleteItem } = require('./item.controller');
+const { postItem, getAllItem, getSingleItem, updateItem, deleteItem, searchItems } = require('./item.controller');
 const verifyAdminToken = require('../middleware/verifyAdminToken');
 const router = express.Router();
 
@@ -34,5 +34,8 @@ router.put("/edit/:id", verifyAdminToken, updateItem)
 
 // delete a book endpoint
 router.delete("/delete/:id", verifyAdminToken, deleteItem)
+
+// search items
+router.get("/search", searchItems);
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { href, Link } from 'react-router-dom'
+import { href, Link, useNavigate } from 'react-router-dom'
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { IoIosSearch } from "react-icons/io";
 import { HiOutlineUser } from "react-icons/hi";
@@ -27,6 +27,15 @@ const Navbar = () => {
     const profileImg = getImageUrl('avatar.png');
 
 
+    // functions for searching
+    const [searchTerm, setSearchTerm]= useState("");
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        if (e.key === "Enter" && searchTerm.trim()) {
+            navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+        }
+        };
 
     //functions to be used
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -54,9 +63,14 @@ const Navbar = () => {
                     {/* {Search Input} */}
                     <div className='relative sm:w-72 w-40 space-x-2'>
                         <IoIosSearch className='absolute inline-block left-3 inset-y-2' />
-                        <input type="text" placeholder='Search here'
-                            className='bg-[#EAEAEA] w-full py-1 
-                            md:px-8 px-6 rounded-md focus:outline-none' />
+                        <input 
+                            type="text" 
+                            placeholder="Search here"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onKeyDown={handleSearch}
+                            className="bg-[#EAEAEA] w-full py-1 md:px-8 px-6 rounded-md focus:outline-none"
+                            />
                     </div>
                 </div>
 

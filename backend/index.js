@@ -30,7 +30,6 @@ app.use("/api/auth", userRoutes)
 const adminRoutes = require("./src/stats/admin.stats")
 app.use("/api/admin", adminRoutes)
 
-
 async function main() {
     await mongoose.connect(process.env.DB_URL);
 
