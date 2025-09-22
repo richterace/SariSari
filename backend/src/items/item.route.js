@@ -26,6 +26,9 @@ router.post("/create-item", verifyAdminToken, postItem)
 // get all books from the current database
 router.get("/", getAllItem)
 
+// search items
+router.get("/search", searchItems);
+
 // single book endpoint
 router.get("/:id", getSingleItem)
 
@@ -35,7 +38,5 @@ router.put("/edit/:id", verifyAdminToken, updateItem)
 // delete a book endpoint
 router.delete("/delete/:id", verifyAdminToken, deleteItem)
 
-// search items
-router.get("/search", searchItems);
 
 module.exports = router;

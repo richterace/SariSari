@@ -8,6 +8,7 @@ const SearchResults = () => {
   const query = new URLSearchParams(search).get("q");
 
   const [results, setResults] = useState([]);
+  const [error, setError] = useState(null); // To handle errors
 
   useEffect(() => {
     if (!query) return;
@@ -17,8 +18,10 @@ const SearchResults = () => {
         console.log(`Fetching results for query: ${query}`); // Debugging log
         const response = await axios.get(`${getBaseUrl()}/api/items/search?q=${query}`);
         setResults(response.data);
+        setError(null); // Clear previous errors on success
       } catch (error) {
         console.error("Search error:", error);
+        setError("There was an error fetching the search results.");
       }
     };
 
@@ -28,11 +31,12 @@ const SearchResults = () => {
   return (
     <div className="p-6">
       <h2 className="text-xl font-bold mb-4">Search Results for: "{query}"</h2>
+      {error && <p className="text-red-500">{error}</p>}
       {results.length > 0 ? (
         <ul className="space-y-2">
-          {results.map((book) => (
-            <li key={book.id} className="p-4 border rounded">
-              {book.title}
+          {results.map((item) => (
+            <li key={item._id} className="p-4 border rounded">
+              {item.title}
             </li>
           ))}
         </ul>

@@ -108,13 +108,15 @@ const searchItems = async (req, res) => {
             return res.status(400).json({ message: "Query is required" });
         }
 
-        console.log(`Searching for items with query: ${q}`);  // Debugging log
+        // Log to see the query being received
+        console.log(`Searching for items with query: ${q}`);
 
-        // Querying the 'title' field, using regex search with case insensitivity
+        // Query by the 'title' field using a case-insensitive regex search
         const items = await Item.find({
-            title: { $regex: q, $options: "i" }
+            title: { $regex: q, $options: "i" } // Case-insensitive regex for title
         });
 
+        // Return the search results
         res.status(200).json(items);
     } catch (error) {
         console.error("Error searching items", error);
