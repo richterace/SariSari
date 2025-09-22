@@ -100,15 +100,19 @@ const deleteItem = async (req, res) => {
 
 
 // search items by query
-    const searchItems = async (req, res) => {
+const searchItems = async (req, res) => {
     try {
         const q = req.query.q?.trim();
+
         if (!q) {
-        return res.status(400).json({ message: "Query is required" });
+            return res.status(400).json({ message: "Query is required" });
         }
 
+        console.log(`Searching for items with query: ${q}`);  // Debugging log
+
+        // Querying the 'title' field, using regex search with case insensitivity
         const items = await Item.find({
-        title: { $regex: q, $options: "i" } // case-insensitive search
+            title: { $regex: q, $options: "i" }
         });
 
         res.status(200).json(items);
@@ -116,7 +120,8 @@ const deleteItem = async (req, res) => {
         console.error("Error searching items", error);
         res.status(500).json({ message: "Failed to search items" });
     }
-    };
+};
+
 
 module.exports = {
     postItem,

@@ -18,7 +18,7 @@ import AddBook from "../pages/dashboard/addBook/AddBook";
 import UpdateBook from "../pages/dashboard/editBook/UpdateBook";
 import UserDashboard from "../pages/dashboard/users/UserDashboard";
 import SingleItem from "../pages/books/SingleItem";
-import SearchResults from "../components/SearcgResults";
+import SearchResults from "../components/SearchResults";
 
 
 const router = createBrowserRouter([
@@ -62,7 +62,10 @@ const router = createBrowserRouter([
                 path: "/user-dashboard",
                 element: <PrivateRoute><UserDashboard /></PrivateRoute>
             },
-            { path: "/search", element: <SearchResults /> },
+            {
+                path: "/search",
+                element: <SearchResults />
+            },
         ]
     },
     {

@@ -14,6 +14,7 @@ const SearchResults = () => {
 
     const fetchResults = async () => {
       try {
+        console.log(`Fetching results for query: ${query}`); // Debugging log
         const response = await axios.get(`${getBaseUrl()}/api/items/search?q=${query}`);
         setResults(response.data);
       } catch (error) {
