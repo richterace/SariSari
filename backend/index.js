@@ -11,7 +11,7 @@ const port = process.env.PRT || 5000;
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173', 'https://61fh238n-5173.asse.devtunnels.ms'],
     credentials: true
 }))
 
@@ -40,6 +40,6 @@ async function main() {
 
 main().then(() => console.log("MongoDb connected successfully")).catch(err => console.log(err));
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Example app listening on port ${port}`)
 })
