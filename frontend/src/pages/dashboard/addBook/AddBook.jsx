@@ -79,11 +79,13 @@ const AddBook = () => {
       <form onSubmit={handleSubmit(onSubmit)} className=''>
         {/* Reusable Input Field for Title */}
         <InputField
-          label="Title"
-          name="title"
-          placeholder="Enter item title"
-          register={register}
-        />
+        label="Title"
+        name="title"
+        placeholder="Enter item title"
+        register={register}
+        validation={{ required: true }} // explicitly required
+      />
+
 
         {/* Reusable Textarea for Description */}
         <InputField
@@ -92,6 +94,7 @@ const AddBook = () => {
           placeholder="Enter item description"
           type="textarea"
           register={register}
+          validation={{}}
 
         />
 
@@ -108,7 +111,8 @@ const AddBook = () => {
             { value: 'canned', label: 'Canned' },
             // Add more options as needed
           ]}
-          register={register}
+           register={register}
+          validation={{ required: true }}
         />
 
         {/* Trending Checkbox */}
@@ -125,13 +129,13 @@ const AddBook = () => {
 
         {/* Old Price */}
         <InputField
-          label="Old Price"
-          name="oldPrice"
-          type="number"
-          placeholder="Old Price"
-          register={register}
-
-        />
+        label="Old Price"
+        name="oldPrice"
+        type="number"
+        placeholder="Old Price"
+        register={register}
+        validation={{}} // optional (or you can omit this prop altogether)
+      />
 
         {/* New Price */}
         <InputField
@@ -140,6 +144,7 @@ const AddBook = () => {
           type="number"
           placeholder="New Price"
           register={register}
+          validation={{ required: true }}
 
         />
 

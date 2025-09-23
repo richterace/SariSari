@@ -22,11 +22,11 @@ const itemSchema = new mongoose.Schema({
 
     oldPrice: {
     type: Number,
-    required: true,
+    required: false,
     validate: {
         validator: function (v) {
-        // Check if it's a number and not NaN
-        return typeof v === 'number' && !isNaN(v);
+        // Allow null or undefined (i.e., optional)
+        return v === undefined || v === null || (typeof v === 'number' && !isNaN(v));
         },
         message: props => `${props.value} is not a valid number!`
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getBookData } from '../../utils/getBookData';
+import { getBookData } from '../../utils/getItemData';
 import { clearCart, removeFromCart } from '../../redux/features/cart/cartSlice';
 
 const CartPage = () => {

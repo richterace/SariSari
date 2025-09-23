@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import getBaseUrl from "../utils/baseUrl";
-import { getBookData } from "../utils/getBookData";
+import { getBookData } from "../utils/getItemData";
 import { useDispatch } from "react-redux";
 import { FiShoppingCart } from "react-icons/fi";
 import { addToCart } from "../redux/features/cart/cartSlice";

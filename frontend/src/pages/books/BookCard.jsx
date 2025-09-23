@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiShoppingCart } from 'react-icons/fi';
-import { getBookData } from '../../utils/getBookData';
+import { getBookData } from '../../utils/getItemData';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/features/cart/cartSlice';

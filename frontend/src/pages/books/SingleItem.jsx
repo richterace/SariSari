@@ -1,5 +1,5 @@
 import React from 'react'
-import { getBookData } from '../../utils/getBookData'
+import { getBookData } from '../../utils/getItemData'
 import { useParams } from 'react-router-dom'
 import { FiShoppingCart } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
