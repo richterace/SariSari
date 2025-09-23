@@ -10,6 +10,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { getImageUrl } from '../utils/getImg';
 import { useSelector } from 'react-redux';
 import { useAuth } from '../context/authContext';
+import { useEffect } from 'react';
 
 
 const navigation =
@@ -31,11 +32,21 @@ const Navbar = () => {
     const [searchTerm, setSearchTerm]= useState("");
     const navigate = useNavigate();
 
-    const handleSearch = (e) => {
-        if (e.key === "Enter" && searchTerm.trim()) {
-            navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
-        }
-        };
+    // const handleSearch = (e) => {
+    //     if (e.key === "Enter" && searchTerm.trim()) {
+    //         navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+    //     }
+    //     };
+
+      // debounce navigation
+    useEffect(() => {
+        if (!searchTerm.trim()) return;
+        const delayDebounce = setTimeout(() => {
+        navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+        }, 500); // 500ms debounce
+
+        return () => clearTimeout(delayDebounce);
+    }, [searchTerm, navigate]);
 
     //functions to be used
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -63,14 +74,13 @@ const Navbar = () => {
                     {/* {Search Input} */}
                     <div className='relative sm:w-72 w-40 space-x-2'>
                         <IoIosSearch className='absolute inline-block left-3 inset-y-2' />
-                        <input 
-                            type="text" 
+                         <input
+                            type="text"
                             placeholder="Search here"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            onKeyDown={handleSearch}
                             className="bg-[#EAEAEA] w-full py-1 md:px-8 px-6 rounded-md focus:outline-none"
-                            />
+                        />
                     </div>
                 </div>
 
