@@ -20,22 +20,22 @@ const router = express.Router();
     503 - 503 Service Unavailable: The server is temporarily unable to handle the request. 
  
 */
-// post a book
+// post a item
 router.post("/create-item", verifyAdminToken, postItem)
 
-// get all books from the current database
+// get all items from the current database
 router.get("/", getAllItem)
 
-// search items
+// search item
 router.get("/search", searchItems);
 
 // single book endpoint
 router.get("/:id", getSingleItem)
 
-// update a book endpoint
+// update a item endpoint
 router.put("/edit/:id", verifyAdminToken, updateItem)
 
-// delete a book endpoint
+// delete a item endpoint
 router.delete("/delete/:id", verifyAdminToken, deleteItem)
 
 

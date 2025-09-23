@@ -29,7 +29,7 @@ const ManageBooks = () => {
         try {
             const result = await Swal.fire({
                 title: "Confirm Delete?",
-                text: "Are you sure you want to delete this book?",
+                text: "Are you sure you want to delete this item?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -39,19 +39,19 @@ const ManageBooks = () => {
 
             if (result.isConfirmed) {
                 await deleteBook(id).unwrap();
-                Swal.fire("Deleted!", "Book deleted successfully!", "success");
+                Swal.fire("Deleted!", "Item deleted successfully!", "success");
                 refetch();
             }
 
         } catch (error) {
-            console.error("Failed to delete book:", error);
-            Swal.fire("Error!", "Failed to delete book. Please try again.", "error");
+            console.error("Failed to delete item:", error);
+            Swal.fire("Error!", "Failed to delete item. Please try again.", "error");
         }
     };
 
     // Handle navigating to Edit Book page
     const handleEditClick = (id) => {
-        navigate(`dashboard/edit-book/${id}`);
+        navigate(`dashboard/edit-item/${id}`);
     };
     return (
         <section className="py-1 bg-blueGray-50">
@@ -60,7 +60,7 @@ const ManageBooks = () => {
                     <div className="rounded-t mb-0 px-4 py-3 border-0">
                         <div className="flex flex-wrap items-center">
                             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                                <h3 className="font-semibold text-base text-blueGray-700">All Books</h3>
+                                <h3 className="font-semibold text-base text-blueGray-700">All Items</h3>
                             </div>
                             <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                                 <button className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">See all</button>
@@ -76,7 +76,7 @@ const ManageBooks = () => {
                                         #
                                     </th>
                                     <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                        Book Title
+                                        Item Name
                                     </th>
                                     <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                         Category
@@ -109,7 +109,7 @@ const ManageBooks = () => {
                                             </td>
                                             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-4">
 
-                                                <Link to={`/dashboard/edit-book/${book._id}`} className="font-medium text-indigo-600 hover:text-indigo-700 mr-2 hover:underline underline-offset-2">
+                                                <Link to={`/dashboard/edit-item/${book._id}`} className="font-medium text-indigo-600 hover:text-indigo-700 mr-2 hover:underline underline-offset-2">
                                                     Edit
                                                 </Link>
                                                 <button

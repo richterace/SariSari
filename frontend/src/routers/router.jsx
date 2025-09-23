@@ -81,15 +81,15 @@ const router = createBrowserRouter([
                 element: <AdminRoute> <Dashboard /></AdminRoute>
             },
             {
-                path: "add-new-book",
+                path: "add-new-item",
                 element: <AdminRoute><AddBook /></AdminRoute>
             },
             {
-                path: "edit-book/:id",
+                path: "edit-item/:id",
                 element: <AdminRoute><UpdateBook /></AdminRoute>
             },
             {
-                path: "manage-books",
+                path: "manage-items",
                 element: <AdminRoute><ManageBooks /></AdminRoute>
             }
         ]

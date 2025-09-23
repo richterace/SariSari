@@ -41,8 +41,8 @@ const AddBook = () => {
     try {
 
       const result = await Swal.fire({
-        title: "Add the book?",
-        text: "Are you sure you want to add this book?",
+        title: "Add the item?",
+        text: "Are you sure you want to add this item?",
         icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -52,14 +52,14 @@ const AddBook = () => {
 
       if (result.isConfirmed) {
         await addBook(newBookData).unwrap();
-        Swal.fire("Added!", "Book added successfully!", "success");
+        Swal.fire("Added!", "Item added successfully!", "success");
         reset();
         setimageFileName('')
         setimageFile(null);
       }
     } catch (error) {
       console.error(error);
-      alert("Failed to add book. Please try again.")
+      alert("Failed to add item. Please try again.")
     }
 
   }
@@ -73,7 +73,7 @@ const AddBook = () => {
   }
   return (
     <div className="max-w-lg   mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Add New Book</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Add New Item</h2>
 
       {/* Form starts here */}
       <form onSubmit={handleSubmit(onSubmit)} className=''>
@@ -81,7 +81,7 @@ const AddBook = () => {
         <InputField
           label="Title"
           name="title"
-          placeholder="Enter book title"
+          placeholder="Enter item title"
           register={register}
         />
 
@@ -89,7 +89,7 @@ const AddBook = () => {
         <InputField
           label="Description"
           name="description"
-          placeholder="Enter book description"
+          placeholder="Enter item description"
           type="textarea"
           register={register}
 
@@ -153,7 +153,7 @@ const AddBook = () => {
         {/* Submit Button */}
         <button type="submit" className="w-full py-2 bg-green-500 text-white font-bold rounded-md">
           {
-            isLoading ? <span className="">Adding.. </span> : <span>Add Book</span>
+            isLoading ? <span className="">Adding.. </span> : <span>Add Item</span>
           }
         </button>
       </form>

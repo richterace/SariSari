@@ -47,15 +47,15 @@ const UpdateBook = () => {
       coverImage: data.coverImage || bookData.coverImage,
     };
     try {
-      await axios.put(`${getBaseUrl()}/api/books/edit/${id}`, updateBookData, {
+      await axios.put(`${getBaseUrl()}/api/items/edit/${id}`, updateBookData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
       Swal.fire({
-        title: "Book Updated",
-        text: "Your book is updated successfully!",
+        title: "Item Updated",
+        text: "Your item is updated successfully!",
         icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -64,7 +64,7 @@ const UpdateBook = () => {
       });
       await refetch()
     } catch (error) {
-      console.error("Failed to update book", error)
+      console.error("Failed to update item", error)
 
     }
 
@@ -75,20 +75,20 @@ const UpdateBook = () => {
   if (isError) return <div>Error fetching data...</div>
   return (
     <div className="max-w-lg mx-auto md:p-6 p-3 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Update Book</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Update Item</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputField
           label="Title"
           name="title"
-          placeholder="Enter book title"
+          placeholder="Enter item title"
           register={register}
         />
 
         <InputField
           label="Description"
           name="description"
-          placeholder="Enter book description"
+          placeholder="Enter item description"
           type="textarea"
           register={register}
         />
@@ -142,7 +142,7 @@ const UpdateBook = () => {
         />
 
         <button type="submit" className="w-full py-2 bg-blue-500 text-white font-bold rounded-md">
-          Update Book
+          Update Item
         </button>
       </form>
     </div>
