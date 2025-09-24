@@ -36,13 +36,14 @@ const BookCard = ({ book }) => {
           </Link>
           <p className="text-gray-600 mb-5">{book.description.length > 80 ? `${book?.description.slice(0, 80)}...` : book.description}</p>
           <p className="font-medium mb-5">
-            ${book?.newPrice} <span className="line-through font-normal ml-2">${book?.oldPrice}</span>
+            ₱{book?.newPrice} {/*<span className="line-through font-normal ml-2">₱{book?.oldPrice}</span> */}
           </p>
           <button
             onClick={() => handleAddToCart(book)}
-            className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
-            <FiShoppingCart className="" />
-            <span>Add to Cart</span>
+            className="btn-primary w-36 h-10 flex items-center justify-center gap-2 whitespace-nowrap"
+          >
+            <FiShoppingCart className="text-lg" />
+            <span className="text-sm">Add to Cart</span>
           </button>
         </div>
       </div>
