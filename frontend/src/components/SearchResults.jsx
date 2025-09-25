@@ -70,7 +70,7 @@ const SearchResults = () => {
                 
                   <strong>Published:</strong> {new Date(item.createdAt).toLocaleDateString()}
                 </p> */}
-                <p className="text-gray-700 mb-1"> <strong>Description: </strong>{item.description?.slice(0, 100)}.</p>
+                <p className="text-gray-700 mb-1"> <strong>Description: </strong>{item.description?.slice(0, 100)}</p>
               </div>
               <button
                 onClick={() => handleAddToCart(item)}
