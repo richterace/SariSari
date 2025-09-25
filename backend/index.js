@@ -11,9 +11,13 @@ const port = process.env.PRT || 5000;
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://61fh238n-5173.asse.devtunnels.ms'],
+    origin: [
+        'http://localhost:5173', 
+        'https://61fh238n-5173.asse.devtunnels.ms',  // Allow your dev tunnel URL
+        'https://61fh238n-5000.asse.devtunnels.ms'   // Add the backend tunnel URL
+    ],
     credentials: true
-}))
+}));
 
 
 
