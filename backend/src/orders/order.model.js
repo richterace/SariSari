@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
-//create a schema
+// Create a schema
 const orderSchema = new mongoose.Schema({
-
-    // field
     name: {
         type: String,
         required: true
@@ -13,7 +11,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // when the field has chiildren
+
     address: {
         city: {
             type: String,
@@ -31,22 +29,28 @@ const orderSchema = new mongoose.Schema({
 
     productIds: [
         {
-
-            type: mongoose.Schema.Types.ObjectId, // this id will come from the reference 'Book'
-            ref: 'Book',
-            required: true
+            productId: {
+                type: mongoose.Schema.Types.ObjectId, // reference to the 'Book' model
+                ref: 'Book',
+                required: true
+            },
+            quantity: {
+                type: Number,
+                required: true
+            }
         }
     ],
+
     totalPrice: {
         type: Number,
         required: true
     }
 }, {
-    timestamps: true // good practice
+    timestamps: true
 });
 
-// initialize the method to export the model
-const Order = mongoose.model('Order', orderSchema)
+// Initialize the model
+const Order = mongoose.model('Order', orderSchema);
 
-// export the module
+// Export the model
 module.exports = Order;
