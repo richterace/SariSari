@@ -3,7 +3,7 @@ import { href, Link, useNavigate } from 'react-router-dom'
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import { IoIosSearch } from "react-icons/io";
 import { HiOutlineUser } from "react-icons/hi";
-import { HiOutlineHeart } from "react-icons/hi";
+// import { HiOutlineHeart } from "react-icons/hi";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 
@@ -72,7 +72,7 @@ const Navbar = () => {
                     </Link>
 
                     {/* {Search Input} */}
-                    <div className='relative sm:w-72 w-40 space-x-2'>
+                    <div className='relative sm:w-72 w-20 space-x-2'>
                         <IoIosSearch className='absolute inline-block left-3 inset-y-2' />
                          <input
                             type="text"
@@ -92,7 +92,7 @@ const Navbar = () => {
                             currentUser ? <>
                                 <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                                     <img src={profileImg} alt=""
-                                        className={`size-7 rounded-full 
+                                        className={`size-7 rounded-full mt-2 mr-2   
                                         ${currentUser ? 'ring-2 ring-blue-500' : ''}`} />
                                 </button>
                                 {/* {show dropdowns} */}
@@ -122,11 +122,11 @@ const Navbar = () => {
                             </> : <Link to="/login"><HiOutlineUser className='size-6' /></Link>
                         }
                     </div>
-
+                    {/* <Link to="/cart">
                     <button className='hidden sm:block'>
                         <HiOutlineHeart className='size-6' />
                     </button>
-
+                    </Link> */}
                     <Link to="/cart" className='bg-primary p-1 sm:px-6 px-2 flex items-center rounded-sm'>
                         <HiOutlineShoppingCart className='' />
                         {
