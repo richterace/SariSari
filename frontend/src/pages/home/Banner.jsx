@@ -4,7 +4,7 @@ import { getImageUrl } from '../../utils/getImg'
 
 const Banner = () => {
 
-    const BannerImg = getImageUrl("banner.png");
+    const BannerImg = getImageUrl("bgpicture.webp");
     return (
         <div className='flex flex-col-reverse md:flex-row pt-0 pb-16 justify-between items-center gap-12'>
 
@@ -12,12 +12,16 @@ const Banner = () => {
 
             {/* {left side} */}
             <div className='md:w-1/2 w-full'>
-                <h1 className='md:text-5xl text-2xl font-medium mb-7'>New Releases This Week</h1>
+                <h1 className='md:text-5xl text-2xl font-medium mb-7'>Sari-Sari Store</h1>
                 <p className='mb-10'>
-                    It's time to update your reading list with some of the latest
-                    and greatest releases in the literary world.
-                    From heart-pumping thrillers to captivating memoirs,
-                    this week's new releases offer something for everyone
+                    At Sari-Sari Store, we bring convenience right to your fingertips. 
+                    Whether you're looking for everyday essentials, snacks, beverages, 
+                    or household items, we’ve got everything you need — all in one place.
+            <br /> 
+            <br />
+                🛒 Browse our online price list, check item availability, 
+                    and plan your purchases before heading out. 
+                    No more guessing — just easy, transparent shopping.
                 </p>
                 <button className='btn-primary'>
                     Subscribe

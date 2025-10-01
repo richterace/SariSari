@@ -60,12 +60,17 @@ const SearchResults = () => {
               </Link>
 
               <div className="flex-1">
-                <p className="text-gray-700 mb-1"><strong>Author:</strong> {item.author || "admin"}</p>
-                <p className="text-gray-700 mb-1"><strong>Category:</strong> {item.category}</p>
+                {/* <p className="text-gray-700 mb-1"><strong>Author:</strong> {item.author || "admin"}</p> */}
                 <p className="text-gray-700 mb-1">
-                  <strong>Published:</strong> {new Date(item.createdAt).toLocaleDateString()}
+                  <strong>Price:</strong> 
+                  <span className="new-text-gray-700"> ₱{item.newPrice}</span>
                 </p>
-                <p className="text-gray-600 mt-2 text-sm">{item.description?.slice(0, 100)}...</p>
+                <p className="text-gray-700 mb-1"><strong>Category:</strong>  {item.category}</p>
+                {/* <p className="text-gray-700 mb-1">
+                
+                  <strong>Published:</strong> {new Date(item.createdAt).toLocaleDateString()}
+                </p> */}
+                <p className="text-gray-700 mb-1"> <strong>Description: </strong>{item.description?.slice(0, 100)}</p>
               </div>
               <button
                 onClick={() => handleAddToCart(item)}
